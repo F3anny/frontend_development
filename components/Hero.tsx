@@ -3,11 +3,11 @@
 import { useEffect, useRef } from "react";
 import { ArrowRight, Search, Mail } from "lucide-react";
 import gsap from "gsap";
+import Image from "next/image"; // NEW: import Image
 
 export default function Hero() {
     const heroRef = useRef(null);
     const lineRef = useRef(null);
-    const contentRef = useRef(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -38,16 +38,24 @@ export default function Hero() {
             className="relative min-h-screen flex flex-col items-center justify-center pt-20 overflow-hidden bg-black selection:bg-[#d9ff00]/30"
         >
             {/* Background Texture - Subtle Dots */}
-            <div className="absolute inset-0 opacity-[0.15]"
+            <div
+                className="absolute inset-0 opacity-[0.15]"
                 style={{
                     backgroundImage: `radial-gradient(#ffffff 0.5px, transparent 0.5px)`,
-                    backgroundSize: '30px 30px'
-                }}>
-            </div>
+                    backgroundSize: "30px 30px"
+                }}
+            ></div>
 
             {/* Glowing Arched Line */}
             <div className="absolute top-[15%] w-full flex justify-center pointer-events-none">
-                <svg width="1200" height="400" viewBox="0 0 1200 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-40">
+                <svg
+                    width="1200"
+                    height="400"
+                    viewBox="0 0 1200 400"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="opacity-40"
+                >
                     <path
                         ref={lineRef}
                         d="M0 400C200 150 1000 150 1200 400"
@@ -55,19 +63,26 @@ export default function Hero() {
                         strokeWidth="1.5"
                     />
                     <defs>
-                        <linearGradient id="limeGradient" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
+                        <linearGradient
+                            id="limeGradient"
+                            x1="0"
+                            y1="0"
+                            x2="1200"
+                            y2="0"
+                            gradientUnits="userSpaceOnUse"
+                        >
                             <stop stopColor="#d9ff00" stopOpacity="0" />
                             <stop offset="0.5" stopColor="#d9ff00" />
                             <stop offset="1" stopColor="#d9ff00" stopOpacity="0" />
                         </linearGradient>
                     </defs>
                 </svg>
+
                 {/* Extra Glow Orb */}
                 <div className="absolute top-[100px] w-[600px] h-[300px] bg-[#d9ff00]/10 blur-[120px] rounded-full translate-y-[-50%]"></div>
             </div>
 
             <div className="container mx-auto px-6 relative z-10 hero-content flex flex-col items-center">
-
                 {/* Main Heading */}
                 <div className="max-w-4xl text-center mb-12">
                     <h1 className="text-5xl md:text-[8rem] font-black leading-[0.9] tracking-tighter mb-8 bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent">
@@ -94,22 +109,26 @@ export default function Hero() {
 
                 {/* Social Proof / Leaders Section */}
                 <div className="mt-32 w-full flex flex-col items-center">
-                    <p className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.4em] mb-12">Already chosen by the leaders</p>
+                    <p className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.4em] mb-12">
+                        Already chosen by the leaders
+                    </p>
                     <div className="flex flex-wrap justify-center items-center gap-x-16 gap-y-10 opacity-30 grayscale hover:grayscale-0 transition-all duration-700">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" className="h-6 md:h-8 invert" />
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" className="h-6 md:h-8 invert" />
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" className="h-6 md:h-8 invert" />
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" className="h-6 md:h-8 invert" />
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" className="h-6 md:h-8 invert" />
+                        {/* Replaced <img> with Next.js <Image> */}
+                        <Image src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" width={100} height={32} className="invert" />
+                        <Image src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" width={100} height={32} className="invert" />
+                        <Image src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" width={100} height={32} className="invert" />
+                        <Image src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" width={100} height={32} className="invert" />
+                        <Image src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" width={100} height={32} className="invert" />
                     </div>
                 </div>
-
             </div>
 
             {/* Bottom Status Scroll */}
             <div className="absolute bottom-10 left-10 hidden lg:flex items-center gap-4">
                 <div className="w-2 h-2 rounded-full bg-[#d9ff00] animate-pulse"></div>
-                <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Available for hire</span>
+                <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest">
+                    Available for hire
+                </span>
             </div>
         </section>
     );
