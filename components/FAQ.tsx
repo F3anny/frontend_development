@@ -36,7 +36,7 @@ export default function FAQ() {
                         <span className="text-[10px] font-bold text-[#d9ff00] uppercase tracking-[0.4em]">Help Center</span>
                     </div>
                     <h2 className="text-4xl md:text-5xl font-medium text-white">
-                        We've got the <span className="text-gray-500 italic">answers.</span>
+                        We&apos;ve got the <span className="text-gray-500 italic">answers.</span>
                     </h2>
                 </div>
 
@@ -45,24 +45,37 @@ export default function FAQ() {
                     {questions.map((item, i) => (
                         <div
                             key={i}
-                            className={`rounded-3xl border transition-all duration-500 overflow-hidden ${openIndex === i ? 'bg-[#0a0a0a] border-[#d9ff00]/20' : 'bg-transparent border-white/5 hover:border-white/10'
-                                }`}
+                            className={`rounded-3xl border transition-all duration-500 overflow-hidden ${
+                                openIndex === i
+                                    ? 'bg-[#0a0a0a] border-[#d9ff00]/20'
+                                    : 'bg-transparent border-white/5 hover:border-white/10'
+                            }`}
                         >
                             <button
                                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                                 className="w-full p-8 flex items-center justify-between text-left"
                             >
-                                <span className={`text-lg font-medium transition-colors ${openIndex === i ? 'text-[#d9ff00]' : 'text-white'}`}>
+                                <span
+                                    className={`text-lg font-medium transition-colors ${
+                                        openIndex === i ? 'text-[#d9ff00]' : 'text-white'
+                                    }`}
+                                >
                                     {item.q}
                                 </span>
-                                <div className={`flex-none w-10 h-10 rounded-full flex items-center justify-center transition-all ${openIndex === i ? 'bg-[#d9ff00] text-black rotate-180' : 'bg-white/5 text-white'
-                                    }`}>
+                                <div
+                                    className={`flex-none w-10 h-10 rounded-full flex items-center justify-center transition-all ${
+                                        openIndex === i ? 'bg-[#d9ff00] text-black rotate-180' : 'bg-white/5 text-white'
+                                    }`}
+                                >
                                     {openIndex === i ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                                 </div>
                             </button>
 
-                            <div className={`transition-all duration-500 ease-in-out ${openIndex === i ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                                }`}>
+                            <div
+                                className={`transition-all duration-500 ease-in-out ${
+                                    openIndex === i ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                                }`}
+                            >
                                 <div className="px-8 pb-8 text-gray-400 text-sm leading-relaxed max-w-2xl">
                                     {item.a}
                                 </div>
