@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { ArrowUpRight, Leaf, Eye, Laptop, User } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image"; // NEW: import for images
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,11 +46,7 @@ export default function Solutions() {
     const ctx = gsap.context(() => {
       gsap.utils.toArray(".project-card").forEach((card: any) => {
         gsap.fromTo(card,
-          {
-            scale: 0.8,
-            opacity: 0,
-            y: 50
-          },
+          { scale: 0.8, opacity: 0, y: 50 },
           {
             scale: 1,
             opacity: 1,
@@ -94,9 +91,11 @@ export default function Solutions() {
             >
               {/* Image Container */}
               <div className="relative aspect-[16/10] overflow-hidden">
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
+                  width={800} // add width
+                  height={500} // add height
                   className="w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-110 transition-all duration-1000"
                 />
 
@@ -130,13 +129,20 @@ export default function Solutions() {
 
         {/* Archive Link */}
         <div className="mt-20 flex justify-center">
-          <a href="https://github.com/Paolauwase-teta" target="_blank" className="group flex items-center gap-6 px-10 py-5 bg-[#0a0a0a] border border-white/5 rounded-full hover:border-[#d9ff00]/30 transition-all duration-500">
-            <span className="text-[10px] font-bold text-gray-500 tracking-[0.4em] uppercase group-hover:text-white">Explore Full Archive</span>
+          <a
+            href="https://github.com/Paolauwase-teta"
+            target="_blank"
+            className="group flex items-center gap-6 px-10 py-5 bg-[#0a0a0a] border border-white/5 rounded-full hover:border-[#d9ff00]/30 transition-all duration-500"
+          >
+            <span className="text-[10px] font-bold text-gray-500 tracking-[0.4em] uppercase group-hover:text-white">
+              Explore Full Archive
+            </span>
             <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#d9ff00] transition-all">
               <ArrowUpRight className="w-5 h-5 text-gray-500 group-hover:text-black" />
             </div>
           </a>
         </div>
+
       </div>
     </section>
   );
